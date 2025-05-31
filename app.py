@@ -1,8 +1,12 @@
 from flask import Flask, request, render_template
-from pickle import load
+import pickle
+import numpy as np
 
 app = Flask(__name__)
-model = load(open("/workspaces/Gonz3092_Flask-Render-4Geeks-proyecto/models/tree_classifier_crit-entro_maxdepth-5_minleaf-4_minsplit2_42.sav", "rb"))
+
+with open('models/tree_classifier_crit-entro_maxdepth-5_minleaf-4_minsplit2_42.sav', 'rb') as f:
+    model = pickle.load(f)
+
 class_dict = {
     "0": "Resultado Negativo",
     "1": "Resultado Positivo"
