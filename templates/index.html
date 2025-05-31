@@ -1,53 +1,61 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API de Predicción de Diabetes</title>
+    <title>Diabetes - Model prediction</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        p { color: #666; }
-        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+        h3 {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-    <h1>API de Predicción de Diabetes</h1>
-    <p>Esta API permite predecir la probabilidad de diabetes basándose en ciertos parámetros médicos.</p>
-    <h2>Endpoint de Predicción</h2>
-    <p><code>POST /predict</code></p>
-    <h3>Parámetros de la solicitud (JSON):</h3>
-    <ul>
-        <li><code>Pregnancies</code>: Número de embarazos (numérico)</li>
-        <li><code>Glucose</code>: Concentración de glucosa (numérico)</li>
-        <li><code>BloodPressure</code>: Presión arterial (numérico)</li>
-        <li><code>SkinThickness</code>: Grosor del pliegue cutáneo (numérico)</li>
-        <li><code>Insulin</code>: Insulina sérica (numérico)</li>
-        <li><code>BMI</code>: Índice de masa corporal (numérico)</li>
-        <li><code>DiabetesPedigreeFunction</code>: Función de pedigrí de diabetes (numérico)</li>
-        <li><code>Age</code>: Edad del paciente (numérico)</li>
-    </ul>
-    <h3>Ejemplo de Solicitud JSON:</h3>
-    <pre><code>
-{
-    "Pregnancies": 6,
-    "Glucose": 148,
-    "BloodPressure": 72,
-    "SkinThickness": 35,
-    "Insulin": 0,
-    "BMI": 33.6,
-    "DiabetesPedigreeFunction": 0.627,
-    "Age": 50
-}
-    </code></pre>
-    <h3>Ejemplo de Respuesta JSON:</h3>
-    <pre><code>
-{
-    "prediction": 1,
-    "prediction_label": "Positivo en Diabetes",
-    "probability_negative": 0.2,
-    "probability_positive": 0.8
-}
-    </code></pre>
+    <h2>Introduce the values</h2>
+    
+    <form action="/" method="post">
+        N° de embarazos: <input type="number" step="any" name="val1" required><br><br>
+        Nivel de Glucosa en sangre: <input type="number" step="any" name="val2" required><br><br>
+        Presion Arterial (medida en mm Hg): <input type="number" step="any" name="val3" required><br><br>
+        Nivel de insulina (medida en mu U/ml): <input type="number" step="any" name="val4" required><br><br>
+        Índice de masa corporal (o.0 a 100.0): <input type="number" step="any" name="val5" required><br><br>
+        Función de pedigrí de diabetes (entre 0 y 3): <input type="number" step="any" name="val6" required><br><br>
+        Edad: <input type="number" step="any" name="val7" required><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    
+    {% if prediction != None %}
+        <h3>Prediction: {{ prediction }}</h3>
+    {% endif %}
 </body>
 </html>
