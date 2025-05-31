@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API de Predicción de Diabetes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        p { color: #666; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>API de Predicción de Diabetes</h1>
+    <p>Esta API permite predecir la probabilidad de diabetes basándose en ciertos parámetros médicos.</p>
+    <h2>Endpoint de Predicción</h2>
+    <p><code>POST /predict</code></p>
+    <h3>Parámetros de la solicitud (JSON):</h3>
+    <ul>
+        <li><code>Pregnancies</code>: Número de embarazos (numérico)</li>
+        <li><code>Glucose</code>: Concentración de glucosa (numérico)</li>
+        <li><code>BloodPressure</code>: Presión arterial (numérico)</li>
+        <li><code>SkinThickness</code>: Grosor del pliegue cutáneo (numérico)</li>
+        <li><code>Insulin</code>: Insulina sérica (numérico)</li>
+        <li><code>BMI</code>: Índice de masa corporal (numérico)</li>
+        <li><code>DiabetesPedigreeFunction</code>: Función de pedigrí de diabetes (numérico)</li>
+        <li><code>Age</code>: Edad del paciente (numérico)</li>
+    </ul>
+    <h3>Ejemplo de Solicitud JSON:</h3>
+    <pre><code>
+{
+    "Pregnancies": 6,
+    "Glucose": 148,
+    "BloodPressure": 72,
+    "SkinThickness": 35,
+    "Insulin": 0,
+    "BMI": 33.6,
+    "DiabetesPedigreeFunction": 0.627,
+    "Age": 50
+}
+    </code></pre>
+    <h3>Ejemplo de Respuesta JSON:</h3>
+    <pre><code>
+{
+    "prediction": 1,
+    "prediction_label": "Positivo en Diabetes",
+    "probability_negative": 0.2,
+    "probability_positive": 0.8
+}
+    </code></pre>
+</body>
+</html>

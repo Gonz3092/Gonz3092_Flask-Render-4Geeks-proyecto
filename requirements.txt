@@ -1,4 +1,6 @@
 pandas
-scikit-learn
 matplotlib
-flask
+Flask
+scikit-learn
+numpy
+gunicorn
